@@ -1,6 +1,7 @@
 ##  What are promises?
 
-* A promise represents the eventual result of an asynchronous operation
+* A pattern to work with asyncronous operations much neatly.
+* A function return a object called promise, which is the eventual result of the operation.
 * operated via **then** method.
 * States : Pending / Fulfilled / Rejected
 
