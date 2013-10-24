@@ -1,4 +1,4 @@
-##  In promise.
+##  In promise
 
 ```
 User.get(1).then(
