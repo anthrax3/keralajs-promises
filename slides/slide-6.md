@@ -2,6 +2,9 @@
 User.get(1)
   .then(Accounts.get)
   .then(function(){
+    return Accounts.update({twitter: @addyosmani})
+  })
+  .then(function(){
     console.log('Success');
   })
   .then(undefined, function(){
@@ -18,7 +21,7 @@ var User = (function(){
         promise.fulfill(data.account_id);
       },
       error: function(){
-        promise.regect('Error');
+        promise.reject('Error');
       }
     });
     return promise;
