@@ -1,6 +1,6 @@
 ##  ABOUT ME
 
-* Jobless guy exploring JS
-* Yeoman backbone generator maintainer
+* Rubist / JavaScripter
+* Yeoman team member
 * http://blog.revathskumar.com
 * Twitter/Github - @revathskumar
