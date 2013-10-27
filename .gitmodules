@@ -1,0 +1,4 @@
+[submodule "upstream"]
+	path = dist
+	url = git@github.com:revathskumar/keralajs-promises.git
+	branch = gh-pages
