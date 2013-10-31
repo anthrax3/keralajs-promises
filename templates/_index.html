@@ -12,14 +12,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    
         <link rel="stylesheet" href="bower_components/reveal.js/css/theme/default.css" id="theme">
+    
 
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css" id="highlight-theme">
 
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
         <script>
-          document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + 'pdf' + '.css" type="text/css" media="print">' );
+          document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
 
         <!--[if lt IE 9]>
@@ -34,31 +36,17 @@
             <div class="slides">
 
                 <% _.forEach(slides, function(slide) { %>
-                    <% if (!_.isString(slide) && !_.isArray(slide) && _.isObject(slide)) { %>
-                        <section <%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-markdown="slides/<%= slide.filename %>"></section>
+                    <% if (!_.isArray(slide)) { %>
+                        <%= section(slide) %>
                     <% } %>
-                    <% if (_.isString(slide)) { %>
-                        <% if (slide.indexOf('.html') !== -1) { %>
-                            <section data-html="slides/<%= slide %>"></section>
-                        <% } else { if (slide.indexOf('.md') !== -1) { %>
-                            <section data-markdown="slides/<%= slide %>"></section>
-                        <% }} %>
-                    <% } else { if (_.isArray(slide)) { %>
+                    <% if (_.isArray(slide)) { %>
                         <section>
                             <% _.forEach(slide, function(verticalslide) { %>
-                                <% if (!_.isString(verticalslide) && _.isObject(verticalslide)) { %>
-                                    <section <%= _.map(slide.attr, function (val, attr) {return attr + '="' + val + '"'}).join(' ')%> data-markdown="slides/<%= slide.filename %>"></section>
-                                <% } %>
-                                <% if (verticalslide.indexOf('.html') !== -1) { %>
-                                    <section data-html="slides/<%= verticalslide %>"></section>
-                                <% } else { if (verticalslide.indexOf('.md') !== -1) { %>
-                                    <section data-markdown="slides/<%= verticalslide %>"></section>
-                                <% }} %>
+                                <%= section(verticalslide) %>
                             <% }); %>
                         </section>
-                    <% }} %>
+                    <% } %>
                 <% }); %>
-
             </div>
 
         </div>
